@@ -1,19 +1,31 @@
 <?php
 
-$aluno = array();
-$aluno['ra'] = 1;
-$aluno['nome'] = 'Matheus';
-$aluno['email'] = 'email@email.com';
-$aluno['prova1'] = 8.0;
-$aluno['aep1'] = 1.0;
-$aluno['prova_integrada1'] = 1.0;
-$aluno['prova2'] = 4.0;
-$aluno['aep2'] = 0.5;
-$aluno['prova_integrada2'] = 0.5;
-$aluno['media1'] = 0.0;
-$aluno['media2'] = 0.0;
-$aluno['mediaFinal'] = 0.0;
-$aluno['situacao'] = '';
+require_once __DIR__ . '/Aluno.php';
+require_once __DIR__ . '/Database.php';
+require_once __DIR__ . '/Notas.php';
+require_once __DIR__ . '/AlunoModel.php';
+
+$aluno = new Aluno( ra: $_POST['ra'], 
+                        nome: $_POST['nome'], 
+                        email: $_POST['email']);
+
+// salvar um aluno no bd
+$alunoModelo = new AlunoModel($aluno);
+$alunoModelo->save();
+
+// $aluno['ra'] = 1;
+// $aluno['nome'] = 'Matheus';
+// $aluno['email'] = 'email@email.com';
+// $aluno['prova1'] = 8.0;
+// $aluno['aep1'] = 1.0;
+// $aluno['prova_integrada1'] = 1.0;
+// $aluno['prova2'] = 4.0;
+// $aluno['aep2'] = 0.5;
+// $aluno['prova_integrada2'] = 0.5;
+// $aluno['media1'] = 0.0;
+// $aluno['media2'] = 0.0;
+// $aluno['mediaFinal'] = 0.0;
+// $aluno['situacao'] = '';
 
 function calcularMedia1($aluno){
     $prova1 = $aluno['prova1'];
@@ -55,12 +67,11 @@ function definirSituacao($aluno){
 }
 $aluno['situacao'] = definirSituacao($aluno);
 
-print_r($aluno);
-print_r(calcularMedia1($aluno));
-print_r(PHP_EOL);
-print_r(calcularMedia2($aluno));
-print_r(PHP_EOL);
-print_r(calcularMediaFinal($aluno));
-print_r(PHP_EOL);
-print_r(definirSituacao($aluno));
-?>
+// print_r($aluno);
+// print_r(calcularMedia1($aluno));
+// print_r(PHP_EOL);
+// print_r(calcularMedia2($aluno));
+// print_r(PHP_EOL);
+// print_r(calcularMediaFinal($aluno));
+// print_r(PHP_EOL);
+// print_r(definirSituacao($aluno));
