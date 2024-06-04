@@ -52,6 +52,9 @@ function calcularMediaFinal($aluno){
   return $mediaFinal;
 }
 $aluno['mediaFinal'] = calcularMediaFinal($aluno);
+$mediaFinal = calcularMediaFinal($aluno);
+
+INSERT INTO Notas (media) VALUES ($mediaFinal) where RA = 1;
 
 function definirSituacao($aluno){
   $situacao = '';
