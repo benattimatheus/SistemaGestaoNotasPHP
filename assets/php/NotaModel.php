@@ -83,4 +83,6 @@ class NotaModel
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    //SELECT Customer, AVG(Amount) FROM Orders GROUP BY Customer;
 }
