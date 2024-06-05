@@ -5,20 +5,46 @@ let salvar_notas = document.getElementById("salvarNotas");
 let salvar_edição = document.getElementById("salvarEditar");
 
 abrir.addEventListener('click', ExibirPopupDados);
-adicionar_dados.addEventListener('click', ExibirPopupNotas);
+adicionar_dados.addEventListener('click', ValidarDados);
 cancelar.addEventListener('click', FecharPopup);
 salvar_notas.addEventListener('click', salvarNotas)
 salvar_edição.addEventListener('click', salvarEdição)
 
 function ExibirPopupDados(){
-    let dados = document.getElementById("popup");
+    let dados = document.getElementById("dialogPopup");
     dados.showModal();
 }
 function ExibirPopupNotas(){
       //Incrementar esta função com as verificações dos dados e transformar os inputs em json
     //para o uso no PHP.
-    let notas = document.getElementById("popupNotas");
+    let notas = document.getElementById("dialogPopupNotas");
     notas.showModal();
+}
+
+
+function ValidarDados() {
+    let nome = document.getElementById("input_nome").value;
+    let ra = document.getElementById("input_ra").value;
+    let email = document.getElementById("input_email").value;
+    const nomeRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/; // Permite letras (com ou sem acento) e espaços
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!nome || !ra || !email) {
+        alert("Todos os campos são obrigatórios!");
+        return;
+    }
+
+    if (!nomeRegex.test(nome)) {
+        alert("O nome inserido não é válido! Por favor, insira apenas letras.");
+        return;
+    }
+
+    if (!emailRegex.test(email)) {
+        alert("O e-mail inserido não está em um formato válido!");
+        return;
+    }
+
+    ExibirPopupNotas();
 }
 
 function salvarNotas(){
@@ -34,10 +60,10 @@ function salvarEdição(){
 // também, conforme necessário terão funções de "Show ou Close Modal"
 
 function FecharPopup(){
-    let dados= document.getElementById("popup");
-    let notas = document.getElementById("popupNotas")
-    dados.closeModal();
-    notas.closeModal();
+    let dados = document.getElementById("dialogPopup");
+    let notas = document.getElementById("dialogPopupNotas")
+    dados.close();
+    notas.close();
 }
 
 function alternarBimestre() {
