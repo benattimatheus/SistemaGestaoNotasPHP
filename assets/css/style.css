@@ -1,12 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
-
-
- /* * { Impedia de centralizar os popups
+ * { 
     margin: 0px;
     padding: 0px;
     box-sizing:content-box;
-}  */
+} 
 
 body{
     background: #DAFFFB; 
@@ -74,11 +72,35 @@ dialog {
     border-radius: 3%;
 }
 
-.container-popup{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 5px rgba(58, 58, 61, 0.39);
+    transition: opacity 0.3s ease; 
+}
+
+.popupNotas {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 5px rgba(58, 58, 61, 0.39);
+    transition: opacity 0.3s ease; 
+}
+
+.popupTabela{
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 5px rgba(58, 58, 61, 0.39);
+    transition: opacity 0.3s ease; 
 }
 
 .placeholder{
