@@ -12,10 +12,18 @@ class AlunoModel
     public function save()
     {        
         $stmt = Database::getConn()->prepare('INSERT INTO Alunos (ra, nome, email) VALUES (:ra, :nome, :email);');
+
+        $ra = $this->aluno->getRA();
+        $nome = $this->aluno->getNome();
+        $email = $this->aluno->getEmail();
         
-        $stmt->bindParam('ra', $this->aluno->getRA());
-        $stmt->bindParam('nome', $this->aluno->getNome());
-        $stmt->bindParam('email', $this->aluno->getEmail());
+        // $stmt->bindParam('ra', $this->aluno->getRA());
+        // $stmt->bindParam('nome', $this->aluno->getNome());
+        // $stmt->bindParam('email', $this->aluno->getEmail());
+
+        $stmt->bindParam(':ra', $ra);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':email', $email);
         
         return $stmt->execute();
     }

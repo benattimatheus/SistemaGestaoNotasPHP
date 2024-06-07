@@ -10,13 +10,15 @@ $aluno = new Aluno( ra: $_POST['ra'],
                         nome: $_POST['nome'], 
                         email: $_POST['email']);
 
-$notas = new Notas( notaProva1: $_POST['Prova1'],
-                    notaAEP1: $_POST['AEP1'],
-                    notaProvaIntegrada1: $_POST['ProvaIntegrada1'],
-                    notaProva2: $_POST['Prova2'],
-                    notaAEP2: $_POST['AEP2'],
-                    notaProvaIntegrada2: $_POST['ProvaIntegrada2']
+$notas = new Notas( $prova1 = isset($_POST['Prova1']) ? (float)($_POST['Prova1'] ?? 0.0) : 0.0,
+$aep1 = isset($_POST['AEP1']) ? (float)($_POST['AEP1'] ?? 0.0) : 0.0,
+$provaIntegrada1 = isset($_POST['ProvaIntegrada1']) ? (float)($_POST['ProvaIntegrada1'] ?? 0.0) : 0.0,
+$prova2 = isset($_POST['Prova2']) ? (float)($_POST['Prova2'] ?? 0.0) : 0.0,
+$aep2 = isset($_POST['AEP2']) ? (float)($_POST['AEP2'] ?? 0.0) : 0.0,
+$provaIntegrada2 = isset($_POST['ProvaIntegrada2']) ? (float)($_POST['ProvaIntegrada2'] ?? 0.0) : 0.0,
 );
+
+$template = file_get_contents(__DIR__ . '\template\tabela.html');
 
 $notas->calcularMediaFinal();
 $notas->calcularMediaBim1();
@@ -33,6 +35,5 @@ $alunoModelo->save();
 $notaModelo = new NotaModel($notas);
 $notaModelo->save();
 // salvar um aluno no bd
-$alunoModelo = new AlunoModel($aluno);
-$alunoModelo->save();
 
+echo $template;
