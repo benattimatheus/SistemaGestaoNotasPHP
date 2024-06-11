@@ -42,8 +42,13 @@ class Notas
     private float $mediaBim2;
     private string $situacao;
     private string $mediaFinal;
+    private Aluno $aluno;
+
+    private int $ra;
 
     public function __construct(
+        Aluno $aluno,
+        // int $ra,
         float $notaProva1 = 0.0,
         float $notaAEP1 = 0.0,
         float $notaProvaIntegrada1 = 0.0,
@@ -51,11 +56,12 @@ class Notas
         float $notaAEP2 = 0.0,
         float $notaProvaIntegrada2 = 0.0
     ) {
+        $this->ra = $aluno->getRA();
         $this->notaProva1 = $notaProva1;
         $this->notaAEP1 = $notaAEP1;
         $this->notaProvaIntegrada1 = $notaProvaIntegrada1;
         $this->mediaBim1 = $this->notaProva1 + $this->notaAEP1 + $this->notaProvaIntegrada1;
-        $this->notaProva2 = $notaProva2;
+        $this->notaProva2 = $notaProva2;    
         $this->notaAEP2 = $notaAEP2;
         $this->notaProvaIntegrada2 = $notaProvaIntegrada2;
         $this->mediaBim2 = $this->notaProva2 + $this->notaAEP2 + $this->notaProvaIntegrada2;
@@ -122,5 +128,9 @@ class Notas
     public function getMediaFinal(): float
     {
         return $this->mediaFinal;
+    }
+    public function getRA(): int
+    {
+        return $this->ra;
     }
 }
