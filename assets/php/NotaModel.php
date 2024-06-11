@@ -38,7 +38,7 @@ class NotaModel
     }
 
     public static function getNotas(){
-        $stmt = Database::getConn()->prepare('SELECT * FROM Notas);
+        $stmt = Database::getConn()->prepare('SELECT * FROM Notas');
         $stmt->execute();
         return $stmt->fetch();
     }

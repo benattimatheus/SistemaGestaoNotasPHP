@@ -28,6 +28,12 @@ class AlunoModel
         return $stmt->execute();
     }
 
+    public static function getAlunos(){
+        $stmt = Database::getConn()->prepare('SELECT * FROM Alunos');
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public static function getAlunoByRA(int $ra)
     {        
         $stmt = Database::getConn()->prepare('SELECT * FROM Alunos WHERE ra = :ra');
