@@ -11,10 +11,11 @@ class NotaModel
 
     public function save()
     {        
-        $stmt = Database::getConn()->prepare('INSERT INTO Notas (Prova_1, AEP_1, Prova_integrada_1, Media_Bim_1, 
+        $stmt = Database::getConn()->prepare('INSERT INTO Notas ( RA, Prova_1, AEP_1, Prova_integrada_1, Media_Bim_1, 
         Prova_2, AEP_2, Prova_integrada_2, Media_Bim_2, Media_Final) 
-        VALUES (:Prova1, :AEP1, :ProvaIntegrada1, :MediaBim1, :Prova2, :AEP2, :ProvaIntegrada2, :MediaBim2, :MediaFinal);');
+        VALUES (:RA ,:Prova1, :AEP1, :ProvaIntegrada1, :MediaBim1, :Prova2, :AEP2, :ProvaIntegrada2, :MediaBim2, :MediaFinal);');
         
+        $stmt->bindParam(':RA',$this->notas->getRA());
         $stmt->bindParam(':Prova1', $this->notas->getNotaProva1());
         $stmt->bindParam(':AEP1', $this->notas->getNotaAEP1());
         $stmt->bindParam(':ProvaIntegrada1', $this->notas->getNotaProvaIntegrada1());
