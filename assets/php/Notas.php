@@ -48,7 +48,6 @@ class Notas
 
     public function __construct(
         Aluno $aluno,
-        // int $ra,
         float $notaProva1 = 0.0,
         float $notaAEP1 = 0.0,
         float $notaProvaIntegrada1 = 0.0,
@@ -72,6 +71,7 @@ class Notas
     {
         $this->mediaBim1 = $this->notaProva1 + $this->notaAEP1 + $this->notaProvaIntegrada1;
     }
+
 
     public function calcularMediaBim2()
     {

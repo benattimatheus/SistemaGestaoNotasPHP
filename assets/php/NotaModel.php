@@ -37,6 +37,12 @@ class NotaModel
         return $stmt->fetch();
     }
 
+    public static function getNotas(){
+        $stmt = Database::getConn()->prepare('SELECT * FROM Notas);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public static function getMediaProva1Total()
     {
         $stmt = Database::getConn()->prepare('SELECT AVG(Prova1) AS media FROM Notas');

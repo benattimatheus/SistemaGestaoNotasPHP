@@ -38,4 +38,8 @@ $notaModelo = new NotaModel($notas);
 $notaModelo->save();
 // salvar um aluno no bd
 
+$lista = [];
+$lista = $notaModelo->getNotas();
+
+
 echo $template;
