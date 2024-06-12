@@ -50,6 +50,14 @@ class AlunoModel
         return $stmt->fetch();
     }
 
+    public static function getNotaByRA(int $ra)
+    {        
+        $stmt = Database::getConn()->prepare('SELECT * FROM Notas WHERE ra = :ra');
+        $stmt->bindParam('ra', $ra);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public static function getUltimoAluno()
     {        
         $stmt = Database::getConn()->prepare('SELECT * FROM Alunos ORDER BY ra DESC;');
@@ -57,27 +65,95 @@ class AlunoModel
         return $stmt->fetch();
     }
 
+
+
+
+    public static function processarRequisicaoEditarDados() {
+        // Verifica se o método de requisição é POST
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Verifica se o parâmetro 'ra' foi enviado
+            if (isset($_POST['ra'])) {
+                // Obtém o valor do parâmetro 'ra'
+                $ra = $_POST['ra'];
+                echo "processar requisição if";
+
+                // Chama a função editarDados da classe AlunoModel
+                self::editarDados($ra);
+            } else {
+                echo "RA não fornecido.";
+            }
+        }
+        echo "processar requisição";
+    }
+
+    public static function editarDados($ra){
+        $aluno = AlunoModel::getAlunoByRA($ra);
+        $notas = AlunoModel::getNotaByRA($ra); 
+        echo "editar dados";
+        $result = array(); // Array para armazenar os dados
+        
+        if ($aluno) {
+            $result['aluno'] = array(
+                'Nome' => htmlspecialchars($aluno['Nome']),
+                'RA' => htmlspecialchars($aluno['RA']),
+                'Email' => htmlspecialchars($aluno['Email'])
+            );
+        } else {
+            $result['error'] = 'Aluno não encontrado!';
+        }
+        
+        if ($notas) {
+            $result['notas'] = array(
+                'Prova1' => htmlspecialchars($notas['Prova1']),
+                'AEP1' => htmlspecialchars($notas['AEP1']),
+                'ProvaIntegrada1' => htmlspecialchars($notas['ProvaIntegrada1']),
+                'Prova2' => htmlspecialchars($notas['Prova2']),
+                'AEP2' => htmlspecialchars($notas['AEP2']),
+                'ProvaIntegrada2' => htmlspecialchars($notas['ProvaIntegrada2'])
+            );
+        } else {
+            $result['error'] = 'Notas não encontradas!';
+        }
+        echo "aaaaaaaa foi";
+        return json_encode($result);
+    }
     
-    function editarDados($ra){
-
-    $aluno = $this->getAlunoByRA($ra);
-
-    if ($aluno) {
-        echo "<script>
-                document.getElementById('input_nome').value = '{$aluno['nome']}';
-                document.getElementById('input_ra').value = '{$aluno['RA']}';
-                document.getElementById('input_email').value = '{$aluno['email']}';
-                document.getElementById('input_prova_1').value = '{$aluno['prova1']}';
-                document.getElementById('input_aep_1').value = '{$aluno['AEP1']}';
-                document.getElementById('input_prova_integrada_1').value = '{$aluno['prova_integrada1']}';
-                document.getElementById('input_prova_2').value = '{$aluno['prova2']}';
-                document.getElementById('input_aep_2').value = '{$aluno['AEP2']}';
-                document.getElementById('input_prova_integrada_2').value = '{$aluno['prova_integrada2']}';
-            </script>";
-            echo "<script>ExibirPopupEditarNotas();</script>";
-    } else {
-        echo "<script>alert('Aluno não encontrado!');</script>";
-    }
-    }
+    // public static function editarDados($ra){
+    //     $aluno = AlunoModel::getAlunoByRA($ra);
+    //     $notas = AlunoModel::getNotaByRA($ra); 
+    
+    //     if ($aluno) {
+    //         echo "<script>
+    //                 document.addEventListener('DOMContentLoaded', function() {
+    //                     document.getElementById('input_nomeEditar').value = '". htmlspecialchars($aluno['Nome']) ."';
+    //                     document.getElementById('input_raEditar').value = '". htmlspecialchars($aluno['RA']) ."';
+    //                     document.getElementById('input_emailEditar').value = '". htmlspecialchars($aluno['Email']) ."';
+    //                 });
+    //               </script>";
+    //     } else {
+    //         echo "<script>alert('Aluno não encontrado!');</script>";
+    //     }
+    
+    //     if ($notas) {
+    //         echo "<script>
+    //                 document.addEventListener('DOMContentLoaded', function() {
+    //                     document.getElementById('input_prova_1Editar').value = '". htmlspecialchars($notas['Prova1']) ."';
+    //                     document.getElementById('input_aep_1Editar').value = '". htmlspecialchars($notas['AEP1']) ."';
+    //                     document.getElementById('input_prova_integrada_1Editar').value = '". htmlspecialchars($notas['ProvaIntegrada1']) ."';
+    //                     document.getElementById('input_prova_2Editar').value = '". htmlspecialchars($notas['Prova2']) ."';
+    //                     document.getElementById('input_aep_2Editar').value = '". htmlspecialchars($notas['AEP2']) ."';
+    //                     document.getElementById('input_prova_integrada_2Editar').value = '". htmlspecialchars($notas['ProvaIntegrada2']) ."';
+    //                 });
+    //               </script>";
+    //     } else {
+    //         echo "<script>alert('Notas não encontradas!');</script>";
+    //     }
+    
+    //     echo "<script>
+    //             document.addEventListener('DOMContentLoaded', function() {
+    //                 ExibirPopupEditarNotas();
+    //             });
+    //           </script>";
+    // }
 
 }
