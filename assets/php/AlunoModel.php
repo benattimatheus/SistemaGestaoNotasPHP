@@ -16,10 +16,6 @@ class AlunoModel
         $ra = $this->aluno->getRA();
         $nome = $this->aluno->getNome();
         $email = $this->aluno->getEmail();
-        
-        // $stmt->bindParam('ra', $this->aluno->getRA());
-        // $stmt->bindParam('nome', $this->aluno->getNome());
-        // $stmt->bindParam('email', $this->aluno->getEmail());
 
         $stmt->bindParam(':ra', $ra);
         $stmt->bindParam(':nome', $nome);
@@ -32,6 +28,12 @@ class AlunoModel
         $stmt = Database::getConn()->prepare('SELECT * FROM Alunos');
         $stmt->execute();
         return $stmt->fetch();
+    }
+
+    public static function getTudoAlunos(){
+        $stmt = Database::getConn()->prepare('SELECT * FROM Alunos, Notas');
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     public static function getAlunoByRA(int $ra)

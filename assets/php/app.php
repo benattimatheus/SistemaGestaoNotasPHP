@@ -18,16 +18,16 @@ $provaIntegrada1 = isset($_POST['ProvaIntegrada1']) ? (float)($_POST['ProvaInteg
 $prova2 = isset($_POST['Prova2']) ? (float)($_POST['Prova2'] ?? 0.0) : 0.0,
 $aep2 = isset($_POST['AEP2']) ? (float)($_POST['AEP2'] ?? 0.0) : 0.0,
 $provaIntegrada2 = isset($_POST['ProvaIntegrada2']) ? (float)($_POST['ProvaIntegrada2'] ?? 0.0) : 0.0,
+$situacao = 'Reprovado'
 );
 
-$template = file_get_contents(__DIR__ . '\template\tabela.html');
 
 $notas->calcularMediaFinal();
 $notas->calcularMediaBim1();
 $notas->calcularMediaBim2();
 
 // Definir situação do aluno
-$notas->definirSituacao();
+$notas->getSituacao();
 
 // Salvar aluno no banco de dados
 $alunoModelo = new AlunoModel($aluno);
@@ -38,14 +38,10 @@ $notaModelo = new NotaModel($notas);
 $notaModelo->save();
 // salvar um aluno no bd
 
-// echo $template;
-$listaA = [];
-$listaA = $alunoModelo->getAlunos();
 
-$listaN = [];
-$listaN = $notaModelo->getNotas();
-
-$listaF = array_merge($listaA, $ListaN);
+$lista = [];
+$listaF = $alunoModelo->getTudoAlunos();
+// print_r($listaF);
 
 ?>  
 
@@ -57,7 +53,7 @@ $listaF = array_merge($listaA, $ListaN);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="icon" href="assets/icon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <title>Gestão de Notas</title>
 </head>
 <body>
@@ -71,7 +67,7 @@ $listaF = array_merge($listaA, $ListaN);
                     <h1>Cadastro de Aluno</h1>
                 </div>
                 <div class="formulario" id="idFormulario">
-                    <form action="./assets/php/app.php" method="POST">
+                    <form action="app.php" method="POST">
                         <div class="placeholder">
                             <input type="text" id="input_nome" name="nome" required>
                             <span for="nome">Nome:</span>
@@ -103,7 +99,7 @@ $listaF = array_merge($listaA, $ListaN);
                     <h1>Cadastro De Notas</h1>
                 </div>
                 <div class="formulario" id="idFormulario">
-                    <form action="./assets/php/app.php" method="POST">
+                    <form action="app.php" method="POST">
                         <div class="notasBimestre">
                             <div>
                                 <div>
@@ -337,7 +333,7 @@ $listaF = array_merge($listaA, $ListaN);
                 </table>
             </div>
         </div>
-        <script src="assets/js/app.js"></script>
+        <script src="/assets/js/app.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 alternarBimestre();

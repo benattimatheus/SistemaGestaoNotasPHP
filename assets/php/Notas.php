@@ -2,35 +2,6 @@
 
 class Notas
 {
-    // public float $notaProva1;
-    // public float $notaAEP1;
-    // public float $notaProvaIntegrada1;
-    // public float $mediaBim1;
-    // public float $notaProva2;
-    // public float $notaAEP2;
-    // public float $notaProvaIntegrada2;
-    // public float $mediaBim2;
-    // public float $mediaFinal;
-    // public string $situacao;
-
-    // public function __construct(
-    //     float $notaProva1,
-    //     float $notaAEP1,
-    //     float $notaProvaIntegrada1,
-    //     float $notaProva2,
-    //     float $notaAEP2,
-    //     float $notaProvaIntegrada2
-    // ) {
-    //     $this->notaProva1 = $notaProva1 ?? 0;
-    //     $this->notaAEP1 = $notaAEP1 ?? 0;
-    //     $this->notaProvaIntegrada1 = $notaProvaIntegrada1 ?? 0;
-    //     $this->mediaBim1 = $this->notaProva1 + $this->notaAEP1 + $this->notaProvaIntegrada1;
-
-    //     $this->notaProva2 = $notaProva2 ?? 0;
-    //     $this->notaAEP2 = $notaAEP2 ?? 0;
-    //     $this->notaProvaIntegrada2 = $notaProvaIntegrada2 ?? 0;
-    //     $this->mediaBim2 = $this->notaProva2 + $this->notaAEP2 + $this->notaProvaIntegrada2;
-    // }
 
     private float $notaProva1;
     private float $notaAEP1;
@@ -53,7 +24,8 @@ class Notas
         float $notaProvaIntegrada1 = 0.0,
         float $notaProva2 = 0.0,
         float $notaAEP2 = 0.0,
-        float $notaProvaIntegrada2 = 0.0
+        float $notaProvaIntegrada2 = 0.0,
+        string $situacao
     ) {
         $this->ra = $aluno->getRA();
         $this->notaProva1 = $notaProva1;
@@ -64,6 +36,7 @@ class Notas
         $this->notaAEP2 = $notaAEP2;
         $this->notaProvaIntegrada2 = $notaProvaIntegrada2;
         $this->mediaBim2 = $this->notaProva2 + $this->notaAEP2 + $this->notaProvaIntegrada2;
+        $this->situacao = $situacao;
     }
 
     
@@ -83,7 +56,7 @@ class Notas
         $this->mediaFinal = ($this->mediaBim1 + $this->mediaBim2) / 2;
     }
 
-    public function definirSituacao()
+    public function getSituacao()
     {
         if ($this->mediaFinal >= 6.0) {
             $this->situacao = 'Aprovado';
