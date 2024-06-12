@@ -125,5 +125,4 @@ function callPHPFunction($ra) {
         }
     };
     xhttp.send($ra);
-    alert($ra);
 }
