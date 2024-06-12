@@ -4,15 +4,30 @@
     margin: 0px;
     padding: 0px;
     box-sizing:content-box;
+    font-family: "Rubik", sans-serif;
+     font-optical-sizing: auto;
 } 
 
 body{
-    background: #DAFFFB; 
+    /* background: #DAFFFB;  */
     position: relative;
+   
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
-    color:#A7A1AE;
+   
+    
+    /* color:#A7A1AE; */
 } 
+
+#backgroundHavard{
+    background-image: url(yale-removebg-preview.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
 
 .site{
     height: 100%;
@@ -33,7 +48,7 @@ body{
     display: fixed;
     align-items: center;    
     justify-content: center;
-    background-color: #04364A;
+    background-color: #20659F;
     padding: 5px;
     font-size: 10px;
     color: rgb(255, 255, 255);
@@ -44,7 +59,7 @@ body{
 
 .cabecalho{
     display: fixed;
-    background-color: #04364A;
+    background-color:#183F78;
     color: white;
     text-align: center;
     justify-content: center;
@@ -56,7 +71,8 @@ body{
 .formulario{
     font-size: 20px;
     padding: 15px;
-    background-color: #64CCC5;
+    backdrop-filter: blur(20px);
+    /* background-color: #64CCC5; */
     width: 700px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -90,6 +106,7 @@ dialog {
     border-radius: 15px;
     box-shadow: 5px 5px 5px 5px rgba(58, 58, 61, 0.39);
     transition: opacity 0.3s ease; 
+    
 }
 
 .popupTabela{
@@ -223,6 +240,7 @@ h2 a {
 .tabela-wrapper {
     overflow-y: scroll;
     max-height: calc(100vh - 220px);
+    border-radius: 11px;
 }
 
 .tabela tr:nth-child(odd) {
@@ -314,7 +332,7 @@ h2 a {
     width: 300px; 
     height:  30px;
     padding: 10px;
-    background-color: #04364A;
+    background-color: #183F78;
     color: #fff;
     border: none;
     font-size: 25px;
@@ -333,7 +351,7 @@ h2 a {
     width: 150px; 
     height:  30px;
     padding: 6px;
-    background-color: #04364A;
+    background-color: #183F78;
     color: #fff;
     border: none;
     font-size: 15px;
