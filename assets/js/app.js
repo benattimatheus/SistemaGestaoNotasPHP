@@ -38,20 +38,21 @@ function ValidarDados() {
 
     if (!nome || !ra || !email) {
         alert("Todos os campos são obrigatórios!");
-        return;
+        return false; // Impede o envio do formulário
     }
 
     if (!nomeRegex.test(nome)) {
         alert("O nome inserido não é válido! Por favor, insira apenas letras.");
-        return;
+        return false; // Impede o envio do formulário
     }
 
     if (!emailRegex.test(email)) {
         alert("O e-mail inserido não está em um formato válido!");
-        return;
+        return false; // Impede o envio do formulário
     }
 
-    ExibirPopupNotas();
+    // Se todos os campos são válidos, retorna true
+    return true;
 }
 
 function salvarNotas(){
