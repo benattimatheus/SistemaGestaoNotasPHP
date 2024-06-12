@@ -42,18 +42,18 @@ class Notas
     
     public function calcularMediaBim1()
     {
-        $this->mediaBim1 = (($this->notaProva1 * 0.8) + ($this->notaAEP1 * 0.1) + ($this->notaProvaIntegrada1 * 0.1));
+        return $this->mediaBim1 = (($this->notaProva1 * 0.8) + ($this->notaAEP1 * 0.1) + ($this->notaProvaIntegrada1 * 0.1));
     }
 
 
     public function calcularMediaBim2()
     {
-        $this->mediaBim2 = (($this->notaProva2 * 0.8) + ($this->notaAEP2 * 0.1) + ($this->notaProvaIntegrada2 * 0.1));
+        return $this->mediaBim2 = (($this->notaProva2 * 0.8) + ($this->notaAEP2 * 0.1) + ($this->notaProvaIntegrada2 * 0.1));
     }
 
     public function calcularMediaFinal()
     {
-        $this->mediaFinal = ($this->getMediaBim1() + $this->getMediaBim2()) / 2;
+        return $this->mediaFinal = ($this->getMediaBim1() + $this->getMediaBim2()) / 2;
     }
 
     public function getSituacao()

@@ -1,3 +1,16 @@
+<?php
+require_once __DIR__ . '/Select.php';
+
+$select = new Select();
+
+$lista = [];
+$listaF = $select->getTudoAlunos();
+
+$listaNotas = [];
+$medias = $select->getMediasTotais();
+
+?>
+
 <!DOCTYPE html>
 <html lang="PT-BR">
 <head>
@@ -21,7 +34,7 @@
                     <h1>Cadastro de Aluno e Notas</h1>
                 </div>
                 <div class="formulario" id="idFormulario">
-                    <form action="./assets/php/app.php" method="POST" onsubmit="return ValidarDados()">
+                    <form action="/assets/php/app.php" method="POST" onsubmit="return ValidarDados()">
                         <div class="placeholder">
                             <input type="text" id="input_nome" name="nome" required>
                             <span for="nome">Nome:</span>
@@ -86,6 +99,7 @@
                             </div>
                             <div>
                                 <button class="botao" type="button" id="cancelarPopup" onclick="FecharPopup()">Cancelar</button>
+                                
                             </div>
                         </div>
                     </form>
@@ -162,7 +176,7 @@
         </dialog>
         <div class="botoesControle">
             <button id="openPopup" class="botaoSite">Adicionar aluno</button>
-            <button id="openPopupTeste" class="botaoSite">popup editar notas</button>
+            <!-- <button id="openPopupTeste" class="botaoSite">popup editar notas</button> -->
             <!-- para aparecer esse botão quando começar a editar a tabela -->
         </div>
         <div class="fora-wrapper">
@@ -215,7 +229,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{LINHAS}}
+                        <?php foreach($listaF as $aluno): ?>
+                    <tr>
+        <td><?=$aluno['Nome'];?></td>
+        <td><?=$aluno['RA'];?></td>
+        <td><?=$aluno['Email'];?></td>
+        <td><?=$aluno['Prova1'];?></td>
+        <td><?=$aluno['AEP1'];?></td>
+        <td><?=$aluno['ProvaIntegrada1'];?></td>
+        <td><?=$aluno['MediaBim1'];?></td>
+        <td><?=$aluno['Prova2'];?></td>
+        <td><?=$aluno['AEP2'];?></td>
+        <td><?=$aluno['ProvaIntegrada2'];?></td>
+        <td><?=$aluno['MediaBim2'];?></td>
+        <td><?=$aluno['MediaFinal'];?></td>
+        <td><?=$aluno['Situacao'];?></td>
+        <td>
+            <button class="update"><a href="editar.php?ra=<?=$aluno['RA']; ?>">Editar</a></button>
+                        <button class="delete"><a href="excluir.php?ra=<?=$aluno['RA'];?>">Excluir</a></button>
+            
+        </td>
+    </tr>
+                            <?php endforeach; ?>
                     </tbody>
                     <tfoot>
                         <tr id="idMediasTabela">
@@ -226,15 +261,15 @@
                                 <h1></h1>
                             </th>
                             <th>MEDIAS</th>
-                            <th id="mediaProva1">{{MEDIAPROVA1}}</th>
-                            <th id="mediaAEP1">{{MEDIAAEP1}}</th>
-                            <th id="mediaProvaIntegrada1">{{MEDIAINTEGRADA1}}</th>
-                            <th id="media1Bi">{{MEDIAB1}}</th>
-                            <th id="mediaProva2">{{MEDIAPROVA2}}</th>
-                            <th id="mediaAEP2">{{MEDIAAEP2}}</th>
-                            <th id="mediaProvaIntegrada2">{{MEDIAINTEGRADA2}}</th>
-                            <th id="media2Bi">{{MEDIAB2}}</th>
-                            <th id="mediaGeral">{{MEDIAGERAL}}</th>
+                            <th id="mediaProva1"><?= $medias['media1']; ?></th>
+        <th id="mediaAEP1"><?= $medias['media2']; ?></th>
+        <th id="mediaProvaIntegrada1"><?= $medias['media3']; ?></th>
+        <th id="media1Bi"><?= $medias['media4']; ?></th>
+        <th id="mediaProva2"><?= $medias['media5']; ?></th>
+        <th id="mediaAEP2"><?= $medias['media6']; ?></th>
+        <th id="mediaProvaIntegrada2"><?= $medias['media7']; ?></th>
+        <th id="media2Bi"><?= $medias['media8']; ?></th>
+        <th id="mediaGeral"><?= $medias['media9']; ?></th>
                             <th>
                                 <h1></h1>
                             </th>

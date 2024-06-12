@@ -8,6 +8,16 @@
      font-optical-sizing: auto;
 } 
 
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer; 
+    background-color: transparent; 
+    border: none; 
+    padding: 0; 
+    margin: 0;
+}
+
 body{
     /* background: #DAFFFB;  */
     position: relative;
@@ -77,6 +87,15 @@ body{
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+.formulario2{
+    font-size: 20px;
+    padding: 15px;
+    backdrop-filter: blur(20px);
+    /* background-color: #64CCC5; */
+    width: 700px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
 
 .rodape{
     display: flex;
@@ -110,6 +129,16 @@ dialog {
 }
 
 .popupTabela{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px 5px rgba(58, 58, 61, 0.39);
+    transition: opacity 0.3s ease; 
+}
+
+.popupTabela2{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -298,6 +327,28 @@ h2 a {
     background-color: #28A745;
     color: white;
     transition: background-color 0.3s ease;
+}
+
+.update{
+    background-color: #28A745;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.update:hover{
+    background-color: #1e7e36;
+}
+
+.delete{
+    background-color: #FB667A;
+    color: white;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.delete:hover{
+    background-color: #d64558;
 }
 
 .tabela td.actions button.update:hover {
