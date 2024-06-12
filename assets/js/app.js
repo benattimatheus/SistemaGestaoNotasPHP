@@ -4,6 +4,7 @@ let adicionar_dados = document.getElementById("adicionar-dados");
 let cancelar = document.getElementById("cancelarPopup");
 let salvar_notas = document.getElementById("salvarNotas");
 let salvar_edição = document.getElementById("salvarEditar");
+let update = document.getElementById("updatepopup");
 
 abrir.addEventListener('click', ExibirPopupDados);
 abrirEditar.addEventListener('click', ExibirPopupEditarNotas);
@@ -11,6 +12,9 @@ adicionar_dados.addEventListener('click', ValidarDados());
 cancelar.addEventListener('click', FecharPopup);
 salvar_notas.addEventListener('click', salvarNotas)
 salvar_edição.addEventListener('click', salvarEdição)
+update.addEventListener("click", function() {
+    ExibirPopupEditarNotas();
+});
 
 function ExibirPopupDados(){
     let dados = document.getElementById("dialogPopup");
@@ -22,11 +26,12 @@ function ExibirPopupNotas(){
     let notas = document.getElementById("dialogPopupNotas");
     notas.showModal();
 }
-function ExibirPopupEditarNotas(){
+
+function ExibirPopupEditarNotas() {
     //Incrementar esta função com as verificações dos dados e transformar os inputs em json
-  //para o uso no PHP.
-  let editar = document.getElementById("dialogPopupEditarNotas");
-  editar.showModal();
+    //para o uso no PHP.
+    let editar = document.getElementById("dialogPopupEditarNotas");
+    editar.showModal();
 }
 
 function ValidarDados() {
@@ -106,4 +111,19 @@ function alternarBimestre() {
         document.getElementById("input_aep_2").value = "";
         document.getElementById("input_prova_integrada_2").value = "";
     }
+}
+
+
+
+function callPHPFunction($ra) {
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "AlunoModel.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById('resultado').innerHTML = this.responseText;
+        }
+    };
+    xhttp.send($ra);
+    alert($ra);
 }
