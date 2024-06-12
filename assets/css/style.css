@@ -399,7 +399,7 @@ h2 a {
 
 .NotasEditar{
     display: flex;
-    background-color: #B2E6E2;
+    background-color: #183F78;
     border: none;
     border-radius: 5px;
     width: 320px;
@@ -417,7 +417,7 @@ h2 a {
 
 .Notas{
     display: flex;
-    background-color: #c2efec;
+    background-color: #ffffff;
     border: none;
     border-radius: 5px;
     width: 250px;
