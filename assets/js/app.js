@@ -7,7 +7,7 @@ let salvar_edição = document.getElementById("salvarEditar");
 
 abrir.addEventListener('click', ExibirPopupDados);
 abrirEditar.addEventListener('click', ExibirPopupEditarNotas);
-adicionar_dados.addEventListener('click', ValidarDados);
+adicionar_dados.addEventListener('click', ValidarDados());
 cancelar.addEventListener('click', FecharPopup);
 salvar_notas.addEventListener('click', salvarNotas)
 salvar_edição.addEventListener('click', salvarEdição)

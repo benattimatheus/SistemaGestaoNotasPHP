@@ -12,7 +12,7 @@ class Notas
     private float $mediaBim1;
     private float $mediaBim2;
     private string $situacao;
-    private string $mediaFinal;
+    private float $mediaFinal;
     private Aluno $aluno;
 
     private int $ra;
@@ -42,28 +42,28 @@ class Notas
     
     public function calcularMediaBim1()
     {
-        $this->mediaBim1 = $this->notaProva1 + $this->notaAEP1 + $this->notaProvaIntegrada1;
+        $this->mediaBim1 = (($this->notaProva1 * 0.8) + ($this->notaAEP1 * 0.1) + ($this->notaProvaIntegrada1 * 0.1));
     }
 
 
     public function calcularMediaBim2()
     {
-        $this->mediaBim2 = $this->notaProva2 + $this->notaAEP2 + $this->notaProvaIntegrada2;
+        $this->mediaBim2 = (($this->notaProva2 * 0.8) + ($this->notaAEP2 * 0.1) + ($this->notaProvaIntegrada2 * 0.1));
     }
 
     public function calcularMediaFinal()
     {
-        $this->mediaFinal = ($this->mediaBim1 + $this->mediaBim2) / 2;
+        $this->mediaFinal = ($this->getMediaBim1() + $this->getMediaBim2()) / 2;
     }
 
     public function getSituacao()
     {
         if ($this->mediaFinal >= 6.0) {
-            $this->situacao = 'Aprovado';
+            return $this->situacao = 'Aprovado';
         } elseif ($this->mediaFinal <= 3.0) {
-            $this->situacao = 'Reprovado';
+            return $this->situacao = 'Reprovado';
         } else {
-            $this->situacao = 'Recuperacao';
+            return $this->situacao = 'Recuperacao';
         }
     }
     public function getNotaProva1(): float

@@ -36,7 +36,7 @@ class AlunoModel
             SELECT A.ra, A.nome, A.email, N.Prova1, N.aep1, N.provaIntegrada1, N.mediabim1, 
                    N.prova2, N.aep2, N.provaIntegrada2, N.mediabim2, N.mediaFinal, N.situacao
             FROM Alunos A
-            LEFT JOIN Notas N ON A.ra = N.ra
+            LEFT JOIN Notas N ON A.ra = N.ra ORDER BY A.ra
         ');
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -58,64 +58,64 @@ class NotaModel
 
     public static function getMediaProva1Total()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(Prova1) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(Prova1), 2) AS media1 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media1'];
     }
 
     public static function getMediaAEP1Total()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(AEP1) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(AEP1), 2) AS media2 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media2'];
     }
 
     public static function getMediaProvaIntegrada1Total()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(ProvaIntegrada1) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(ProvaIntegrada1), 2) AS media3 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media3'];
     }
 
     public static function getMediaBim1Total()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(MediaBim1) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(MediaBim1), 2) AS media4 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media4'];
     }
 
     public static function getMediaProva2Total()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(Prova2) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(Prova2), 2) AS media5 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media5'];
     }
 
     public static function getMediaAEP2Total()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(AEP2) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(AEP2), 2) AS media6 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media6'];
     }
 
     public static function getMediaProvaIntegrada2Total()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(ProvaIntegrada2) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(ProvaIntegrada2), 2) AS media7 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media7'];
     }
 
     public static function getMediaBim2Total()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(MediaBim2) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(MediaBim2), 2) AS media8 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media8'];
     }
 
     public static function getMediaFinalTotal()
     {
-        $stmt = Database::getConn()->prepare('SELECT AVG(MediaFinal) AS media FROM Notas');
+        $stmt = Database::getConn()->prepare('SELECT ROUND(AVG(MediaFinal), 2) AS media9 FROM Notas');
         $stmt->execute();
-        return $stmt->fetch()['media'];
+        return $stmt->fetch()['media9'];
     }
 }

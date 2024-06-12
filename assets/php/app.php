@@ -18,16 +18,15 @@ $provaIntegrada1 = isset($_POST['ProvaIntegrada1']) ? (float)($_POST['ProvaInteg
 $prova2 = isset($_POST['Prova2']) ? (float)($_POST['Prova2'] ?? 0.0) : 0.0,
 $aep2 = isset($_POST['AEP2']) ? (float)($_POST['AEP2'] ?? 0.0) : 0.0,
 $provaIntegrada2 = isset($_POST['ProvaIntegrada2']) ? (float)($_POST['ProvaIntegrada2'] ?? 0.0) : 0.0,
-$situacao = 'Reprovado'
+$situacao = ''
 );
 
-
-$notas->calcularMediaFinal();
 $notas->calcularMediaBim1();
 $notas->calcularMediaBim2();
-
-// Definir situação do aluno
+$notas->calcularMediaFinal();
 $notas->getSituacao();
+// Definir situação do aluno
+
 
 // Salvar aluno no banco de dados
 $alunoModelo = new AlunoModel($aluno);
@@ -52,11 +51,11 @@ function gerarLinhaAluno($aluno) {
         <td>' . htmlspecialchars($aluno['Prova1'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['AEP1'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['ProvaIntegrada1'] ?? '-') . '</td>
-        <td>' . htmlspecialchars($aluno['Media1B'] ?? '-') . '</td>
+        <td>' . htmlspecialchars($aluno['MediaBim1'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['Prova2'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['AEP2'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['ProvaIntegrada2'] ?? '-') . '</td>
-        <td>' . htmlspecialchars($aluno['Media2B'] ?? '-') . '</td>
+        <td>' . htmlspecialchars($aluno['MediaBim2'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['MediaFinal'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['Situacao'] ?? '-') . '</td>
         <td class="actions">
@@ -75,10 +74,20 @@ foreach ($listaF as $aluno) {
 
 $template = str_replace(
     [
-        '{{LINHAS}}'
+        '{{LINHAS}}',
+        '{{MEDIAPROVA1}}',
+        '{{MEDIAAEP1}}',
+        '{{MEDIAINTEGRADA1}}',
+        '{{MEDIAB1}}',
+        '{{MEDIAPROVA2}}',
+        '{{MEDIAAEP2}}',
+        '{{MEDIAINTEGRADA2}}',
+        '{{MEDIAB2}}',
+        '{{MEDIAGERAL}}'
     ],
     [
-        $rows
+        $rows, $notaModelo->getMediaProva1Total(), $notaModelo->getMediaAEP1Total(), $notaModelo->getMediaAEP1Total(), $notaModelo->getMediaBim1Total(),
+        $notaModelo->getMediaProva2Total(), $notaModelo->getMediaAEP2Total(), $notaModelo->getMediaAEP2Total(), $notaModelo->getMediaBim2Total(), $notaModelo->getMediaFinalTotal() 
     ],
     $template);
 // Substituir o placeholder {{ROWS}} no template
