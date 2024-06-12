@@ -12,19 +12,32 @@ class NotaModel
     public function save()
     {        
         $stmt = Database::getConn()->prepare('INSERT INTO Notas ( RA, Prova_1, AEP_1, Prova_integrada_1, Media_Bim_1, 
-        Prova_2, AEP_2, Prova_integrada_2, Media_Bim_2, Media_Final) 
-        VALUES (:RA ,:Prova1, :AEP1, :ProvaIntegrada1, :MediaBim1, :Prova2, :AEP2, :ProvaIntegrada2, :MediaBim2, :MediaFinal);');
+        Prova_2, AEP_2, Prova_integrada_2, Media_Bim_2, Media_Final, Situacao) 
+        VALUES (:RA ,:Prova1, :AEP1, :ProvaIntegrada1, :MediaBim1, :Prova2, :AEP2, :ProvaIntegrada2, :MediaBim2, :MediaFinal, :Situacao);');
         
-        $stmt->bindParam(':RA',$this->notas->getRA());
-        $stmt->bindParam(':Prova1', $this->notas->getNotaProva1());
-        $stmt->bindParam(':AEP1', $this->notas->getNotaAEP1());
-        $stmt->bindParam(':ProvaIntegrada1', $this->notas->getNotaProvaIntegrada1());
-        $stmt->bindParam(':MediaBim1', $this->notas->getMediaBim1());
-        $stmt->bindParam(':Prova2', $this->notas->getNotaProva2());
-        $stmt->bindParam(':AEP2', $this->notas->getNotaAEP2());
-        $stmt->bindParam(':ProvaIntegrada2', $this->notas->getNotaProvaIntegrada2());
-        $stmt->bindParam(':MediaBim2', $this->notas->getMediaBim2());
-        $stmt->bindParam(':MediaFinal', $this->notas->getMediaFinal());
+        $ra = $this->notas->getRA();
+        $prova1 = $this->notas->getNotaProva1();
+        $aep1 = $this->notas->getNotaAEP1();
+        $provaIntegrada1 = $this->notas->getNotaProvaIntegrada1();
+        $mediaBim1 = $this->notas->getMediaBim1();
+        $prova2 = $this->notas->getNotaProva2();
+        $aep2 = $this->notas->getNotaAEP2();
+        $provaIntegrada2 = $this->notas->getNotaProvaIntegrada2();
+        $mediaBim2 = $this->notas->getMediaBim2();
+        $mediaFinal = $this->notas->getMediaFinal();
+        $situacao = $this->notas->getSituacao();
+
+        $stmt->bindParam(':RA', $ra);
+        $stmt->bindParam(':Prova1', $prova1);
+        $stmt->bindParam(':AEP1', $aep1);
+        $stmt->bindParam(':ProvaIntegrada1', $provaIntegrada1);
+        $stmt->bindParam(':MediaBim1', $mediaBim1);
+        $stmt->bindParam(':Prova2', $prova2);
+        $stmt->bindParam(':AEP2', $aep2);
+        $stmt->bindParam(':ProvaIntegrada2', $provaIntegrada2);
+        $stmt->bindParam(':MediaBim2', $mediaBim2);
+        $stmt->bindParam(':MediaFinal', $mediaFinal);
+        $stmt->bindParam(':Situacao', $situacao);
 
         return $stmt->execute();
     }
