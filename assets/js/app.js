@@ -1,10 +1,12 @@
 let abrir = document.getElementById("openPopup");
+let abrirEditar = document.getElementById("openPopupTeste");
 let adicionar_dados = document.getElementById("adicionar-dados");
-let cancelar = document.getElementById("cancelar");
+let cancelar = document.getElementById("cancelarPopup");
 let salvar_notas = document.getElementById("salvarNotas");
 let salvar_edição = document.getElementById("salvarEditar");
 
 abrir.addEventListener('click', ExibirPopupDados);
+abrirEditar.addEventListener('click', ExibirPopupEditarNotas);
 adicionar_dados.addEventListener('click', ValidarDados);
 cancelar.addEventListener('click', FecharPopup);
 salvar_notas.addEventListener('click', salvarNotas)
@@ -20,7 +22,12 @@ function ExibirPopupNotas(){
     let notas = document.getElementById("dialogPopupNotas");
     notas.showModal();
 }
-
+function ExibirPopupEditarNotas(){
+    //Incrementar esta função com as verificações dos dados e transformar os inputs em json
+  //para o uso no PHP.
+  let editar = document.getElementById("dialogPopupEditarNotas");
+  editar.showModal();
+}
 
 function ValidarDados() {
     let nome = document.getElementById("input_nome").value;
@@ -61,9 +68,11 @@ function salvarEdição(){
 
 function FecharPopup(){
     let dados = document.getElementById("dialogPopup");
-    let notas = document.getElementById("dialogPopupNotas")
+    // let notas = document.getElementById("dialogPopupNotas");
+    let editar = document.getElementById("dialogPopupEditarNotas");
     dados.close();
-    notas.close();
+    // notas.close();
+    editar.close();
 }
 
 function alternarBimestre() {
