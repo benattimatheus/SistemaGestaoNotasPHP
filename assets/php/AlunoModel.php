@@ -56,4 +56,28 @@ class AlunoModel
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    
+    function editarDados($ra){
+
+    $aluno = $this->getAlunoByRA($ra);
+
+    if ($aluno) {
+        echo "<script>
+                document.getElementById('input_nome').value = '{$aluno['nome']}';
+                document.getElementById('input_ra').value = '{$aluno['RA']}';
+                document.getElementById('input_email').value = '{$aluno['email']}';
+                document.getElementById('input_prova_1').value = '{$aluno['prova1']}';
+                document.getElementById('input_aep_1').value = '{$aluno['AEP1']}';
+                document.getElementById('input_prova_integrada_1').value = '{$aluno['prova_integrada1']}';
+                document.getElementById('input_prova_2').value = '{$aluno['prova2']}';
+                document.getElementById('input_aep_2').value = '{$aluno['AEP2']}';
+                document.getElementById('input_prova_integrada_2').value = '{$aluno['prova_integrada2']}';
+            </script>";
+            echo "<script>ExibirPopupEditarNotas();</script>";
+    } else {
+        echo "<script>alert('Aluno não encontrado!');</script>";
+    }
+    }
+
 }
