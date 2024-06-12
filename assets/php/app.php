@@ -59,7 +59,7 @@ function gerarLinhaAluno($aluno) {
         <td>' . htmlspecialchars($aluno['MediaFinal'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['Situacao'] ?? '-') . '</td>
         <td class="actions">
-            <button class="update" onclick="ExibirPopupEditarNotas()" onclick="editarDados(\'' . htmlspecialchars($aluno['RA'] ?? '-') . '\')"">Editar</button>
+            <button id="updatepopup" class="update" onclick="callPHPFunction(\'' . htmlspecialchars($aluno['RA'] ?? '-') . '\')">Editar</button>
             <button class="delete" onclick="excluirLinha(\'' . htmlspecialchars($aluno['RA'] ?? '-') . '\')">Excluir</button>
         </td>
     </tr>';
