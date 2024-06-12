@@ -17,7 +17,7 @@
         <dialog id="dialogPopup">
             <div id="popup" class="popup">
                 <div class="Cadastro">
-                    <h1>Cadastro de Aluno</h1>
+                    <h1>Cadastro de Aluno e Notas</h1>
                 </div>
                 <div class="formulario" id="idFormulario">
                     <form action="./assets/php/app.php" method="POST">
@@ -33,26 +33,6 @@
                             <input type="email" id="input_email" name="email" required>
                             <span for="input_email">Email:</span>
                         </div>
-                        <div class="rodape">
-                            <div>
-                                <button class="botao" type="submit" id="adicionar-dados"
-                                    value="Adicionar">Adicionar</button>
-                            </div>
-                            <div>
-                                <button class="botao" id="cancelar">Cancelar</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </dialog>
-        <dialog id="dialogPopupNotas">
-            <div id="popupNotas" class="popupNotas">
-                <div class="Cadastro">
-                    <h1>Cadastro De Notas</h1>
-                </div>
-                <div class="formulario" id="idFormulario">
-                    <form action="./assets/php/app.php" method="POST">
                         <div class="notasBimestre">
                             <div>
                                 <div>
@@ -104,16 +84,16 @@
                                 <button class="botao" type="submit" id="salvarNotas">Adicionar</button>
                             </div>
                             <div>
-                                <button class="botao" id="cancelar">Cancelar</button>
+                                <button class="botao" type="button" id="cancelarPopup" onclick="FecharPopup()">Cancelar</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </dialog>
-        <!-- popup para edição da tabela
-        <div class="container-popup"> 
-            <dialog id="popupTabela" class="popupTabela">
+        <!-- popup para edição da tabela -->
+        <dialog id="dialogPopupEditarNotas">
+            <div id="popupTabela" class="popupTabela">
                 <div class="Cadastro">
                     <h1>Edição Da Tabela</h1>
                 </div>
@@ -135,13 +115,13 @@
                             <div class="divNotasEditar">
                                 <div>
                                     <span class="spanNotasEditar" for="nome">Prova 1:</span>
-                                    <input class="NotasEditar" type="number" id="input_prova_1" name="Prova 1 " max="10.0"
-                                        min="0" step="0.1">
+                                    <input class="NotasEditar" type="number" id="input_prova_1" name="Prova 1 "
+                                        max="10.0" min="0" step="0.1">
                                 </div>
                                 <div>
                                     <span class="spanNotasEditar" for="input_ra">AEP 1:</span>
-                                    <input class="NotasEditar" type="number" id="input_aep_1" name="AEP" max="10.0" min="0"
-                                        step="0.1">
+                                    <input class="NotasEditar" type="number" id="input_aep_1" name="AEP" max="10.0"
+                                        min="0" step="0.1">
                                 </div>
                                 <div>
                                     <span class="spanNotasEditar" for="input_email">Prova Integrada 1 :</span>
@@ -152,13 +132,13 @@
                             <div class="divNotasEditar">
                                 <div>
                                     <span class="spanNotasEditar" for="nome">Prova 2:</span>
-                                    <input class="NotasEditar" type="number" id="input_prova_2" name="Prova 2 " max="10.0"
-                                        min="0" step="0.1">
+                                    <input class="NotasEditar" type="number" id="input_prova_2" name="Prova 2 "
+                                        max="10.0" min="0" step="0.1">
                                 </div>
                                 <div>
                                     <span class="spanNotasEditar" for="input_ra">AEP 2:</span>
-                                    <input class="NotasEditar" type="number" id="input_aep_2" name="AEP" max="10.0" min="0"
-                                        step="0.1">
+                                    <input class="NotasEditar" type="number" id="input_aep_2" name="AEP" max="10.0"
+                                        min="0" step="0.1">
                                 </div>
                                 <div>
                                     <span class="spanNotasEditar" for="input_email">Prova Integrada 2:</span>
@@ -177,11 +157,11 @@
                         </div>
                     </form>
                 </div>
-            </dialog>
-        </div> -->
+            </div>
+        </dialog>
         <div class="botoesControle">
             <button id="openPopup" class="botaoSite">Adicionar aluno</button>
-            <button id="openSalvar" class="botaoSalvar">ver função</button>
+            <button id="openPopupTeste" class="botaoSite">popup editar notas</button>
             <!-- para aparecer esse botão quando começar a editar a tabela -->
         </div>
         <div class="fora-wrapper">
