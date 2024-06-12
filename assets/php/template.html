@@ -21,7 +21,7 @@
                     <h1>Cadastro de Aluno e Notas</h1>
                 </div>
                 <div class="formulario" id="idFormulario">
-                    <form action="./assets/php/app.php" method="POST" onsubmit="return ValidarDados()">
+                    <form action="/assets/php/app.php" method="POST" onsubmit="return ValidarDados()">
                         <div class="placeholder">
                             <input type="text" id="input_nome" name="nome" required>
                             <span for="nome">Nome:</span>
@@ -101,49 +101,49 @@
                 <div class="formulario" id="idFormulario">
                     <form>
                         <div class="placeholder">
-                            <input type="text" id="input_nome" name="nome">
+                            <input type="text" id="input_nomeEditar" name="nome">
                             <span for="nome">Nome:</span>
                         </div>
                         <div class="placeholder">
-                            <input type="number" id="input_ra" name="ra">
+                            <input type="number" id="input_raEditar" name="ra">
                             <span for="input_ra">RA:</span>
                         </div>
                         <div class="placeholder">
-                            <input type="email" id="input_email" name="email">
+                            <input type="email" id="input_emailEditar" name="email">
                             <span for="input_email">Email:</span>
                         </div>
                         <div class="notasBimestreEditar">
                             <div class="divNotasEditar">
                                 <div>
                                     <span class="spanNotasEditar" for="nome">Prova 1:</span>
-                                    <input class="NotasEditar" type="number" id="input_prova_1" name="Prova 1 "
+                                    <input class="NotasEditar" type="number" id="input_prova_1Editar" name="Prova 1 "
                                         max="10.0" min="0" step="0.1">
                                 </div>
                                 <div>
                                     <span class="spanNotasEditar" for="input_ra">AEP 1:</span>
-                                    <input class="NotasEditar" type="number" id="input_aep_1" name="AEP" max="10.0"
+                                    <input class="NotasEditar" type="number" id="input_aep_1Editar" name="AEP" max="10.0"
                                         min="0" step="0.1">
                                 </div>
                                 <div>
                                     <span class="spanNotasEditar" for="input_email">Prova Integrada 1 :</span>
-                                    <input class="NotasEditar" type="number" id="input_prova_integrada_1"
+                                    <input class="NotasEditar" type="number" id="input_prova_integrada_1Editar"
                                         name="Prova Integrada 1" max="10.0" min="0" step="0.1">
                                 </div>
                             </div>
                             <div class="divNotasEditar">
                                 <div>
                                     <span class="spanNotasEditar" for="nome">Prova 2:</span>
-                                    <input class="NotasEditar" type="number" id="input_prova_2" name="Prova 2 "
+                                    <input class="NotasEditar" type="number" id="input_prova_2Editar" name="Prova 2 "
                                         max="10.0" min="0" step="0.1">
                                 </div>
                                 <div>
                                     <span class="spanNotasEditar" for="input_ra">AEP 2:</span>
-                                    <input class="NotasEditar" type="number" id="input_aep_2" name="AEP" max="10.0"
+                                    <input class="NotasEditar" type="number" id="input_aep_2Editar" name="AEP" max="10.0"
                                         min="0" step="0.1">
                                 </div>
                                 <div>
                                     <span class="spanNotasEditar" for="input_email">Prova Integrada 2:</span>
-                                    <input class="NotasEditar" type="number" id="input_prova_integrada_2"
+                                    <input class="NotasEditar" type="number" id="input_prova_integrada_2Editar"
                                         name="Prova Integrada 2" max="10.0" min="0" step="0.1">
                                 </div>
                             </div>
@@ -153,7 +153,7 @@
                                 <button class="botao" type="button" id="salvarEditar">Salvar</button>
                             </div>
                             <div>
-                                <button class="botao" id="cancelar">Cancelar</button>
+                                <button class="botao" type="button" id="cancelar" onclick="FecharPopup()" >Cancelar</button>
                             </div>
                         </div>
                     </form>
