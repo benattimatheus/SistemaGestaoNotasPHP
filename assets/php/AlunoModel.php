@@ -30,10 +30,16 @@ class AlunoModel
         return $stmt->fetch();
     }
 
-    public static function getTudoAlunos(){
-        $stmt = Database::getConn()->prepare('SELECT * FROM Alunos, Notas');
+    public static function getTudoAlunos()
+    {
+        $stmt = Database::getConn()->prepare('
+            SELECT A.ra, A.nome, A.email, N.Prova1, N.aep1, N.provaIntegrada1, N.mediabim1, 
+                   N.prova2, N.aep2, N.provaIntegrada2, N.mediabim2, N.mediaFinal, N.situacao
+            FROM Alunos A
+            LEFT JOIN Notas N ON A.ra = N.ra
+        ');
         $stmt->execute();
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function getAlunoByRA(int $ra)
