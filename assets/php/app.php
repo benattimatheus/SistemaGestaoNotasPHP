@@ -59,8 +59,7 @@ function gerarLinhaAluno($aluno) {
         <td>' . htmlspecialchars($aluno['MediaFinal'] ?? '-') . '</td>
         <td>' . htmlspecialchars($aluno['Situacao'] ?? '-') . '</td>
         <td class="actions">
-            <button class="add" onclick="editarNotas(this)">Adicionar Notas</button>
-            <button class="update" onclick="editarDados(this)">Editar</button>
+            <button class="update" onclick="ExibirPopupEditarNotas()" onclick="editarDados(\'' . htmlspecialchars($aluno['RA'] ?? '-') . '\')"">Editar</button>
             <button class="delete" onclick="excluirLinha(\'' . htmlspecialchars($aluno['RA'] ?? '-') . '\')">Excluir</button>
         </td>
     </tr>';
